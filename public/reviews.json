@@ -1,0 +1,56 @@
+[
+    {
+        "id": "1",
+        "user_name": "Lyndsey",
+        "user_image": "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg",
+        "book": "1984",
+        "writer": "George Orwell",
+        "review": "This book is like the dystopian Lord of the Rings, with its richly developed culture and economics.",
+        "rating": 5
+    },
+    {
+        "id": "2",
+        "user_name": "Emily W. Thompson",
+        "user_image": "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg",
+        "book": "The Crossing on Reedsy Discovery",
+        "writer": "Michael Doane",
+        "review": "In Doane’s debut novel, a young man embarks on a journey of self-discovery with surprising results.",
+        "rating": 5
+    },
+    {
+        "id": "3",
+        "user_name": "The Book Smugglers",
+        "user_image": "https://images.pexels.com/photos/2253415/pexels-photo-2253415.jpeg",
+        "book": "The Care and Feeding of Ravenously Hungry Girls",
+        "writer": "Anissa Gray",
+        "review": "I am still dipping my toes into the literally fiction pool, finding what works for me and what doesn’t.",
+        "rating": 5
+    },
+    {
+        "id": "4",
+        "user_name": "The Book Hookup",
+        "user_image": "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg",
+        "book": "The Hate U Give",
+        "writer": "gie Thomas",
+        "review": "5 stars! I can’t imagine how challenging it would be to tackle the voice of a movement like Black Lives Matter.",
+        "rating": 5
+    },
+    {
+        "id": "5",
+        "user_name": "James",
+        "user_image": "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg",
+        "book": "Goodnight, Moon on Goodreads",
+        "writer": "Margaret Wise Brown",
+        "review": "Goodnight Moon by Margaret Wise Brown is one of the books that followers of my blog voted as a must-read for our Children's Book.",
+        "rating": 5
+    },
+    {
+        "id": "6",
+        "user_name": "Karlyn P ",
+        "user_image": "https://images.pexels.com/photos/322920/pexels-photo-322920.jpeg",
+        "book": "Dark Witch",
+        "writer": "Nora Roberts",
+        "review": "4 stars. Great world-building, weak romance, but still worth the read.I hesitate to describe this book as a 'romance' novel simply.",
+        "rating": 4
+    }
+]

@@ -1,0 +1,14 @@
+.review {
+    height: 400px;
+    width: 300px;
+}
+
+.review img {
+    height: 50px;
+    width: 50px;
+
+}
+.user_name{
+    font-weight: bold;
+  
+}

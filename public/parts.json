@@ -1,0 +1,62 @@
+[
+    {
+    "_id": "1",
+    "name": "Yamaha YZF R1",
+    "image": "https://i.ibb.co/vm1PBxm/yamaha-yzf-r1.jpg",
+    "about": "The Yamaha YZF-R1 is a 1,000 cc class sports motorcycle made by Yamaha. It was first released in 1998, undergoing significant updates in 2000, 2002, 2004, 2006, 2007, 2009 and 2015.",
+    "price": "250000",
+    "minimum_quantity": "100",
+    "available_quantity": "1200",
+    "company_name": "Moto Sport Bd"
+    },
+    {
+    "_id": "2",   
+    "name": "Honda Dream NEO",
+    "image": "https://i.ibb.co/2dYVwhp/honda-dream-neo-640.jpg",
+    "about": "The Dream Neo is the most affordable motorcycle in Honda India's range. Being a Honda, the built quality of the Neo is slightly better than the competition. The bike looks very similar to the Dream Yuga, only the graphics are different and it has a more basic tail section.",
+    "price": "180000",
+    "minimum_quantity": "100",
+    "available_quantity": "1200",
+    "company_name": "Rancon Motorbikes Limited"
+    },
+    {
+    "_id": "3",    
+    "name": "Suzuki Gixxer",
+    "image": "https://i.ibb.co/TPfsfCq/suzuki.jpg",
+    "about": "The Suzuki Gixxer is a 154.9 cc naked motorcycle from Suzuki. The bike was launched in September 2014. Its design is similar to the GSX-S1000. The name derives from a nickname used in Britain and elsewhere for Suzuki's GSX-R series of bikes.",
+    "price": "250000",
+    "minimum_quantity": "100",
+    "available_quantity": "1200",
+    "company_name": "Taro Bangla"
+    },
+    {
+    "_id": "4",
+    "name": "Bajaj Pulsar",
+    "image": "https://i.ibb.co/frN1kXr/bajaj.jpg",
+    "about": "The Bajaj Pulsar is a range of motorcycles manufactured by Bajaj Auto in India. It was developed by the product engineering division of Bajaj Auto in association with Tokyo R&D, and later with motorcycle designer Glynn Kerr.",
+    "price": "180000",
+    "minimum_quantity": "100",
+    "available_quantity": "1200",
+    "company_name": "Street Sports Bike Shop"
+    },
+    {
+    "_id": "5",
+    "name": "Runner Bolt 165R",
+    "image": "https://i.ibb.co/5ccbtv0/runner.png",
+    "about": "Runner manufactures 12 different motorcycles ranging in size from 80 to 150 CC, Runner has become the market leader in sub 100 CC motorcycle. Runner Automobiles Limited, the pioneer motorcycle manufacturer and exporter started its journey back in 2000. ",
+    "price": "180000",
+    "minimum_quantity": "100",
+    "available_quantity": "1200",
+    "company_name": "Motorcycle World Limited"
+    },
+    {
+    "_id": "6",
+    "name": "Hero Splendor Plus",
+    "image": "https://i.ibb.co/LRKrTz0/hero-honda.jpg",
+    "about": "The Hero Splendor Plus is one of the 20 different products from Hero on sale in India. It has a starting price of Rs 64850 and comes in 5 different versions. The Hero Splendor Plus generates a max power of 8.02 PS @8000 rpm along with a peak torque of 9.89 Nm @ 5500 rpm.",
+    "price": "200000",
+    "minimum_quantity": "100",
+    "available_quantity": "1200",
+    "company_name": "Rancon Motorbikes Limited"
+    }
+    ]
