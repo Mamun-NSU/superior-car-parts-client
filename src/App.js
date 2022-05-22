@@ -8,6 +8,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import Blogs from "./Pages/Blogs/Blogs";
 import NotFound from "./Pages/Shared/NotFound";
 import Purchase from "./Pages/Purchase/Purchase";
+import AddProduct from "./Pages/AddProduct/AddProduct";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="home" element={<Home />} />
         <Route path="dashboard" element={<Dashboard></Dashboard>}></Route>
         <Route path="/parts/:partId" element={<Purchase></Purchase>} />
+        <Route path="add" element={<AddProduct></AddProduct>} />
         <Route path="blogs" element={<Blogs></Blogs>} />
         <Route path="about" element={<About></About>} />
         <Route path="login" element={<Login></Login>} />
