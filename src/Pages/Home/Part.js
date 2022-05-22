@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./css/Part.css";
+import useParts from "../../hooks/useParts";
+
 const Part = ({ part }) => {
   const {
     _id,
@@ -12,11 +14,32 @@ const Part = ({ part }) => {
     available_quantity,
     company_name,
   } = part;
+
+  const [parts, setParts] = useParts();
+
   const navigate = useNavigate();
 
   const navigateToPartDetail = (id) => {
     navigate(`/parts/${id}`);
   };
+
+  const deleteItem = (id) => {
+    const proceed = window.confirm("Are you sure?");
+    if (proceed) {
+      const url = `http://localhost:5000/parts/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          const remaining = parts.filter((part) => part._id !== id);
+          setParts(remaining);
+        });
+    }
+  };
+
+
   return (
     <div className="product">
       <img className="w-100" src={image} alt="" />
@@ -33,6 +56,9 @@ const Part = ({ part }) => {
         className="btn btn-primary"
       >
         Book: {name}
+      </button>
+      <button onClick={() => deleteItem(_id)} className="btn btn-primary">
+        Delete: {name}
       </button>
     </div>
   );
