@@ -10,6 +10,7 @@ import NotFound from "./Pages/Shared/NotFound";
 import Purchase from "./Pages/Purchase/Purchase";
 import AddProduct from "./Pages/AddProduct/AddProduct";
 import SignUp from "./Pages/Login/SignUp";
+import RequireAuth from "./Pages/Login/RequireAuth";
 
 function App() {
   return (
@@ -18,7 +19,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home></Home>} />
         <Route path="home" element={<Home />} />
-        <Route path="dashboard" element={<Dashboard></Dashboard>}></Route>
+        <Route
+          path="dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard></Dashboard>
+            </RequireAuth>
+          }
+        ></Route>
         <Route path="/parts/:partId" element={<Purchase></Purchase>} />
         <Route path="add" element={<AddProduct></AddProduct>} />
         <Route path="blogs" element={<Blogs></Blogs>} />
