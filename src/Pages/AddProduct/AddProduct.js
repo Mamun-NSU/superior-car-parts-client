@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useForm } from "react-hook-form";
 
@@ -22,9 +21,26 @@ const AddProduct = () => {
   };
 
   return (
-    <div className="w-50 mx-auto">
-      <h2>Please add a product</h2>
-      <form className="d-flex flex-column" onSubmit={handleSubmit(onSubmit)}>
+    // <div>
+    //         <input type="checkbox" id="booking-modal" className="modal-toggle" />
+    //         <div className="modal modal-bottom sm:modal-middle">
+    //             <div className="modal-box">
+    //                 <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+    //                 <h3 className="font-bold text-lg text-secondary">Booking for: {name}</h3>
+    //                 {/* This is form */}
+    //             </div>
+    //         </div>
+    //     </div>
+
+    // This is in top nav: w-50 mx-auto
+    <div className="">
+      <h2 className="font-bold text-lg text-secondary text-center my-5">
+        Please add a product
+      </h2>
+      <form
+        className="grid grid-cols-1 gap-3 justify-items-center mt-2"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <input
           className="mb-2"
           placeholder="Name"
@@ -64,11 +80,14 @@ const AddProduct = () => {
           placeholder="company Name"
           {...register("company_name", { required: true, maxLength: 40 })}
         />
-        <input type="submit" value="Add Service" />
+        <input
+          type="submit"
+          value="Add Service"
+          className="btn btn-secondary w-full max-w-xs"
+        />
       </form>
     </div>
   );
 };
 
 export default AddProduct;
-
