@@ -11,6 +11,7 @@ const Navbar = () => {
 
   const logout = () => {
     signOut(auth);
+    localStorage.removeItem('accessToken');
   };
   const menuItems = (
     <>
@@ -27,7 +28,7 @@ const Navbar = () => {
         <Link to="/blogs">Blogs</Link>
       </li>
       <li>
-        {user ? (user?.displayName):""}
+        {user ? (user?.displayName) : ""}
       </li>
       <li>
         {user ? (
