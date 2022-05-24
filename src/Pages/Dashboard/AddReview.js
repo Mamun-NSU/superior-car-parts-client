@@ -7,7 +7,7 @@ const AddReview = () => {
   const { register, handleSubmit } = useForm();
   const [user, loading, error] = useAuthState(auth);
 
-  const onSubmit = (event) => {
+  const onSubmit = (data, event) => {
     event.preventDefault();
 
     const reviews = {
