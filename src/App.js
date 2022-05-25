@@ -16,6 +16,7 @@ import AddReview from "./Pages/Dashboard/AddReview";
 import MyPortfolio from "./Pages/Dashboard/MyPortfolio";
 import Users from "./Pages/Users/Users";
 import RequireAdmin from "./Pages/Login/RequireAdmin";
+import ManageOrders from "./Pages/ManageOrders/ManageOrders";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         </Route>
         <Route path="/parts/:partId" element={<Purchase></Purchase>} />
         <Route path="add" element={<AddProduct></AddProduct>} />
+        <Route path="/manageOrders" element={<ManageOrders></ManageOrders>} />
         <Route path="blogs" element={<Blogs></Blogs>} />
         <Route path="about" element={<About></About>} />
         <Route

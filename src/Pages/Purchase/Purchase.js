@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 
 const Purchase = () => {
+  const { register, handleSubmit } = useForm();
+  const [user, loading, error] = useAuthState(auth);
+  const [totalPrice, setTotalPrice] = useState(0);
+
   const { partId } = useParams();
   const url = `http://localhost:5000/parts/${partId}`;
 
@@ -16,47 +23,118 @@ const Purchase = () => {
     }).then((res) => res.json())
   );
 
-  const navigateToPartOrder = (id) => {
-    // navigate(`/parts/${id}`);
-    alert("GREAT!You click for order!!");
-  };
+  // const navigateToPartOrder = (id) => {
+  //   // navigate(`/parts/${id}`);
+  //   alert("GREAT!You click for order!!");
+  // };
 
-  if (isLoading) {
+  if (loading || isLoading) {
     return <Loading></Loading>;
   }
+
+  const onSubmit = (data, event) => {
+    event.preventDefault();
+
+    const orders = {
+      user_email: user.email,
+      user_name: user.displayName,
+      order_name: part.name,
+      order_quantity: event.target.order_quantity.value,
+      order_price: totalPrice,
+      order_address: event.target.order_address.value,
+    };
+    const url = `http://localhost:5000/orders`;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(orders),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
+  };
+  const calculatePrice = (event) => {
+    const totalPrice = event.target.value * part.price;
+    console.log(totalPrice);
+    setTotalPrice(totalPrice);
+    // return totalPrice;
+  };
+
   return (
     <div>
-      <h1>This is Purchase page</h1>
-      <h3>Booking ID: {partId}</h3>
-      <div className="card w-50 max-w-md bg-base-100 shadow-xl my-12">
-        {/* <div className="card-body">
-          <p className="text-success font-bold">
-            Hello, {appointment.patientName}
-          </p>
-          <h2 className="card-title">Please Pay for {appointment.treatment}</h2>
-          <p>
-            Your Appointment:{" "}
-            <span className="text-orange-700">{appointment.date}</span> at{" "}
-            {appointment.slot}
-          </p>
-          <p>Please pay: ${appointment.price}</p>
-        </div> */}
+      <h1 className="font-bold text-lg text-secondary text-center my-5">
+        This is Purchase page
+      </h1>
+      <h3 className="font-bold text-lg text-secondary text-center my-5">
+        Booking ID: {partId}
+      </h3>
+      <form
+        className="grid grid-cols-1 gap-3 justify-items-center mt-2"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <img className="w-100" src={part.image} alt="" />
-        <h2>{part.name}</h2>
+        <input
+          type="text"
+          name="user_name"
+          disabled
+          value={user?.displayName || ""}
+          className="input input-bordered w-full max-w-xs"
+        />
+        <input
+          type="user_email"
+          name="email"
+          disabled
+          value={user?.email || ""}
+          className="input input-bordered w-full max-w-xs"
+        />
+        <input
+          type="text"
+          name="order_name"
+          disabled
+          value={part.name}
+          className="input input-bordered w-full max-w-xs"
+        />
+        <input
+          //Here we write a
+          onMouseLeave={calculatePrice}
+          type="number"
+          name="order_quantity"
+          placeholder="Order Quantity"
+          className="input input-bordered w-full max-w-xs"
+        />
+        <input
+          type="number"
+          name="order_price"
+          disabled
+          value={totalPrice}
+          className="input input-bordered w-full max-w-xs"
+        />
+        <input
+          type="text"
+          name="order_address"
+          placeholder="Order Address"
+          className="input input-bordered w-full max-w-xs"
+        />
+
+        {/* <h2>{part.name}</h2>
         <p>Price: {part.price}</p>
         <p>Available Quantity: {part.available_quantity}</p>
         <p>Minimum Quantity: {part.minimum_quantity}</p>
         <p>Company Name: {part.company_name}</p>
         <p>
           <small>{part.about}</small>
-        </p>
+        </p> */}
         <button
-          onClick={() => navigateToPartOrder(part._id)}
-          className="btn btn-primary"
+          type="submit"
+          // onClick={() => navigateToPartOrder(part._id)}
+          className="btn btn-secondary w-full max-w-xs"
         >
           Order: {part.name}
         </button>
-      </div>
+      </form>
     </div>
   );
 };
