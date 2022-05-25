@@ -29,6 +29,7 @@ const ManageOrders = () => {
               <th></th>
               <th>Customer</th>
               <th>Product Name</th>
+              <th>Product Quantity</th>
               <th>Total Price</th>
               <th>Location</th>
               <th>Remove Order</th>

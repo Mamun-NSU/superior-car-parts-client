@@ -31,6 +31,16 @@ const Navbar = () => {
       </li>
       {admin && (
         <li>
+          <Link to="/manageProducts">Manage Products</Link>
+        </li>
+      )}
+      {admin && (
+        <li>
+          <Link to="/manageOrders">Manage Orders</Link>
+        </li>
+      )}
+      {admin && (
+        <li>
           <Link to="/users">All Users</Link>
         </li>
       )}
