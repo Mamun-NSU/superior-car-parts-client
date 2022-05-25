@@ -39,11 +39,11 @@ function App() {
           <Route path="history" element={<MyPortfolio></MyPortfolio>}></Route>
         </Route>
         <Route path="/parts/:partId" element={<Purchase></Purchase>} />
-        <Route path="add" element={<AddProduct></AddProduct>} />
-        <Route path="/manageOrders" element={<ManageOrders></ManageOrders>} />
+        <Route path="add" element={<RequireAdmin><AddProduct></AddProduct></RequireAdmin>} />
+        <Route path="/manageOrders" element={<RequireAdmin><ManageOrders></ManageOrders></RequireAdmin>} />
         <Route
           path="/manageProducts"
-          element={<ManageProducts></ManageProducts>}
+          element={<RequireAdmin><ManageProducts></ManageProducts></RequireAdmin>}
         />
         <Route path="blogs" element={<Blogs></Blogs>} />
         <Route path="about" element={<About></About>} />

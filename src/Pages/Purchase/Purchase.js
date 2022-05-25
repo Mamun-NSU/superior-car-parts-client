@@ -17,16 +17,12 @@ const Purchase = () => {
   const { data: part, isLoading } = useQuery(["parts", partId], () =>
     fetch(url, {
       method: "GET",
-      // headers: {
-      //   authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      // },
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
     }).then((res) => res.json())
   );
 
-  // const navigateToPartOrder = (id) => {
-  //   // navigate(`/parts/${id}`);
-  //   alert("GREAT!You click for order!!");
-  // };
 
   if (loading || isLoading) {
     return <Loading></Loading>;
@@ -47,7 +43,8 @@ const Purchase = () => {
     fetch(url, {
       method: "POST",
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
+        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
       },
       body: JSON.stringify(orders),
     })

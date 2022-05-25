@@ -29,21 +29,22 @@ const Navbar = () => {
       <li>
         <Link to="/blogs">Blogs</Link>
       </li>
-      {admin && (
+
+      {admin && <>
+        <li>
+          <Link to="/add">Add Products</Link>
+        </li>
         <li>
           <Link to="/manageProducts">Manage Products</Link>
         </li>
-      )}
-      {admin && (
         <li>
           <Link to="/manageOrders">Manage Orders</Link>
         </li>
-      )}
-      {admin && (
         <li>
           <Link to="/users">All Users</Link>
         </li>
-      )}
+      </>}
+
       <li>{user ? user?.displayName : ""}</li>
       <li>
         {user ? (
