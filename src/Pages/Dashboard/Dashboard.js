@@ -24,6 +24,7 @@ const Dashboard = () => {
           <li>
             <Link to="/dashboard/history">My Portfolio</Link>
           </li>
+          
         </ul>
       </div>
     </div>
