@@ -55,8 +55,12 @@ const MyOrders = () => {
   };
   return (
     <div>
-      <h2>Orders for: {user.displayName}</h2>
-      <h2>My Orders: {orders.length}</h2>
+      <h2 className="text-3xl font-bold text-primary text-center my-5">
+        Orders for: {user.displayName}
+      </h2>
+      <h2 className="text-2xl font-bold text-primary text-center my-5">
+        My Orders: {orders.length}
+      </h2>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>

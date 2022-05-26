@@ -4,55 +4,67 @@ import "./Blogs.css";
 const Blogs = () => {
   return (
     <div class="blog-container w-80">
-      <hr />
+      <h2 className="text-2xl font-bold text-primary text-center my-5">
+        This is Blog
+      </h2>
       <div class="single-blog">
-        <h5>Difference between Authorization and Authentication?</h5>
+        <h5>How will you improve the performance of a React Application?</h5>
         <p>
-          <span class="answare-keyword">Answare:</span> Authentication means
-          confirming user own identity, while authorization means granting
-          access to the system. In authentication process, the identity of users
-          are checked for providing the access to the system. While in
-          authorization process user’s authorities are checked for accessing the
-          resources. So, the authentication is the process of verifying who
-          someone is, whereas authorization is the process of verifying what
-          specific applications, files, and data a user has access to. Both
-          Authentication and Authorization area unit utilized in respect of
-          knowledge security that permits the safety on an automatic data
-          system.
+          <span class="answare-keyword">Answare:</span> We can improve the
+          performance of a React Application by many ways. Some of them are
+          discribed here. We can use Immutable Data Structures, this make our
+          react app faster. Also Function or Stateless Components make smooth to
+          work react app and useing React.PureComponent make it fast. We always
+          should Avoid Reconciliation because it kills time to run app. Useing
+          React.Fragment is best option to Avoid Adding Extra Nodes to the DOM.
+          by using React.Fragment make app fast. We cal also use Use React.memo
+          for Component Memoization to make it fast. We should always Avoid
+          Anonymous Functions, because Anonymous Functions make app very slow.
+          We should Use React.lazy and React.Suspense to get good performances.
+          We always Use Production Build components to make our react app faster
+          and get good performances.
         </p>
       </div>
       <div class="single-blog">
-        <h5>
-          Why are you using Firebase? What other options do you have to
-          implement Authentication?
+        <h5 className="font-bold">
+          What are the different ways to manage a state in a React application?
         </h5>
         <p>
-          <span class="answare-keyword">Answare:</span> Google Firebase is an
-          application development platform that allows developers to create iOS,
-          Android, and Web apps. By using firebase we can easily develop web
-          applications and engege with users easily. Implementing Firebase means
-          plugging a ready-made backend into our client code to make it dynamic.
-          if you want to deploy a working product on the cloud rapidly the
-          Google Firebaseone of the best. <br></br>There are many options to
-          inplement Authentication such as Biometric Authentication,
-          Certificate-based Authentication, Multi-factor Authentication,
-          Token-based Authentication, Password-based authentication etc. There
-          are also cookie-Based authentication, token-Based authentication,
-          third party access like OAuth, API-token.
+          <span class="answare-keyword">Answare:</span> ....
         </p>
       </div>
       <div class="single-blog">
-        <h5>
-          What other services does Firebase provide other than Authentication?
+        <h5 className="font-bold">How does prototypical inheritance work?</h5>
+        <p>
+          <span class="answare-keyword">Answare:</span>....
+        </p>
+      </div>
+      <div class="single-blog">
+        <h5 className="font-bold">
+          Why you do not set the state directly in React. For example, if you
+          have const [products, setProducts] = useState([]). Why you do not set
+          products = [...] instead, you use the setProducts
         </h5>
         <p>
-          <span class="answare-keyword">Answare:</span>Firebase is a full
-          package that can help us to develop web applications or mobile app
-          faster with fewer resources and more efficiency. Firebase provides us
-          many services like Authentication. The most popular services of
-          firebase are: Cloud Firestore,Cloud Functions, Authentication,
-          Hosting, Cloud Storage, Google Analytics, Predictions, Cloud
-          Messaging, Dynamic Links, Remote Config etc.
+          <span class="answare-keyword">Answare:</span>....
+        </p>
+      </div>
+      <div class="single-blog">
+        <h5 className="font-bold">
+          You have an array of products. Each product has a name, price,
+          description, etc. How will you implement a search to find products by
+          name?
+        </h5>
+        <p>
+          <span class="answare-keyword">Answare:</span>....
+        </p>
+      </div>
+      <div class="single-blog">
+        <h5 className="font-bold">
+          What is a unit test? Why should write unit tests?
+        </h5>
+        <p>
+          <span class="answare-keyword">Answare:</span>....
         </p>
       </div>
     </div>

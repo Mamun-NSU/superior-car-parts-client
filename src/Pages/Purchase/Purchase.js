@@ -10,6 +10,7 @@ const Purchase = () => {
   const { register, handleSubmit } = useForm();
   const [user, loading, error] = useAuthState(auth);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [numberError, setNumberError] = useState("");
 
   const { partId } = useParams();
   const url = `http://localhost:5000/parts/${partId}`;
@@ -22,7 +23,6 @@ const Purchase = () => {
       },
     }).then((res) => res.json())
   );
-
 
   if (loading || isLoading) {
     return <Loading></Loading>;
@@ -40,32 +40,46 @@ const Purchase = () => {
       order_address: event.target.order_address.value,
     };
     const url = `http://localhost:5000/orders`;
-    fetch(url, {
-      method: "POST",
-      headers: {
-        'content-type': 'application/json',
-        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-      },
-      body: JSON.stringify(orders),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-      });
+    if (!numberError.length) {
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(orders),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          console.log(result);
+        });
+    }
   };
   const calculatePrice = (event) => {
     const totalPrice = event.target.value * part.price;
-    console.log(totalPrice);
-    setTotalPrice(totalPrice);
+    const inputValue = event.target.value;
+
+    if (
+      inputValue < part.minimum_quantity ||
+      inputValue > part.available_quantity
+    ) {
+      event.target.value = 0;
+      setTotalPrice(0);
+      setNumberError(
+        `Error occured. Number must be between ${part.minimum_quantity} and ${part.available_quantity}`
+      );
+    } else {
+      console.log(totalPrice);
+      setTotalPrice(totalPrice);
+      setNumberError("");
+    }
+
     // return totalPrice;
   };
 
   return (
     <div>
-      <h1 className="font-bold text-lg text-secondary text-center my-5">
-        This is Purchase page
-      </h1>
-      <h3 className="font-bold text-lg text-secondary text-center my-5">
+      <h3 className="font-bold text-3xl text-secondary text-center my-5">
         Booking ID: {partId}
       </h3>
       <form
@@ -101,7 +115,14 @@ const Purchase = () => {
           name="order_quantity"
           placeholder="Order Quantity"
           className="input input-bordered w-full max-w-xs"
+          {...register("order_quantity", {
+            required: {
+              value: true,
+              message: "Order Quantity is Required",
+            },
+          })}
         />
+        <span style={{ color: "red" }}>{numberError}</span>
         <input
           type="number"
           name="order_price"

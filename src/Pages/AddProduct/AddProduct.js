@@ -22,20 +22,8 @@ const AddProduct = () => {
   };
 
   return (
-    // <div>
-    //         <input type="checkbox" id="booking-modal" className="modal-toggle" />
-    //         <div className="modal modal-bottom sm:modal-middle">
-    //             <div className="modal-box">
-    //                 <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-    //                 <h3 className="font-bold text-lg text-secondary">Booking for: {name}</h3>
-    //                 {/* This is form */}
-    //             </div>
-    //         </div>
-    //     </div>
-
-    // This is in top nav: w-50 mx-auto
     <div className="">
-      <h2 className="font-bold text-lg text-secondary text-center my-5">
+      <h2 className="text-2xl font-bold text-primary text-center my-5">
         Please add a product
       </h2>
       <form
