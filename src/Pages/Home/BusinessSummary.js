@@ -3,7 +3,9 @@ import React from "react";
 const BusinessSummary = () => {
   return (
     <div>
-      <h2 className="text-primary text-center mt-5">This is BusinessSummary</h2>
+      <h2 className="text-2xl font-bold text-primary text-center my-5">
+        This is BusinessSummary
+      </h2>
       <div className="stats shadow">
         <div className="stat">
           <div className="stat-figure text-secondary">
@@ -21,8 +23,8 @@ const BusinessSummary = () => {
               ></path>
             </svg>
           </div>
-          <div className="stat-title">Downloads</div>
-          <div className="stat-value">31K</div>
+          <div className="stat-title">Total Sells</div>
+          <div className="stat-value">10K</div>
           <div className="stat-desc">Jan 1st - Feb 1st</div>
         </div>
 
@@ -43,8 +45,8 @@ const BusinessSummary = () => {
             </svg>
           </div>
           <div className="stat-title">New Users</div>
-          <div className="stat-value">4,200</div>
-          <div className="stat-desc">↗︎ 400 (22%)</div>
+          <div className="stat-value">1,200</div>
+          <div className="stat-desc">↗︎ 220 (22%)</div>
         </div>
 
         <div className="stat">
@@ -63,9 +65,10 @@ const BusinessSummary = () => {
               ></path>
             </svg>
           </div>
-          <div className="stat-title">New Registers</div>
-          <div className="stat-value">1,200</div>
-          <div className="stat-desc">↘︎ 90 (14%)</div>
+          <div className="stat-title">Total Export</div>
+          <div className="stat-value">8k</div>
+          <div className="stat-desc">↗︎ 180 (25%)</div>
+          <div className="stat-desc">Jan 1st - Feb 1st</div>
         </div>
       </div>
     </div>

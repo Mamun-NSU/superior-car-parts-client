@@ -20,8 +20,8 @@ const AddReview = () => {
     fetch(url, {
       method: "POST",
       headers: {
-        'content-type': 'application/json',
-        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(reviews),
     })
@@ -60,12 +60,22 @@ const AddReview = () => {
           placeholder="Review"
           className="input input-bordered w-full max-w-xs"
         />
-        <input
+        {/* <input
           type="number"
           name="ratings"
           placeholder="Ratings"
           className="input input-bordered w-full max-w-xs"
-        />
+        /> */}
+        <select
+          name="ratings"
+          className="select select-bordered w-full max-w-xs"
+        >
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
 
         <input
           type="submit"

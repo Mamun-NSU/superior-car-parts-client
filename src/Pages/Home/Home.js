@@ -8,7 +8,6 @@ import Reviews from "./Reviews";
 const Home = () => {
   return (
     <div>
-      <h2 className="text-primary text-center mt-5">This is Home</h2>
       <Banner></Banner>
       <Parts></Parts>
       <BusinessSummary></BusinessSummary>

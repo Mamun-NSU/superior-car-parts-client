@@ -20,6 +20,25 @@ const CheckoutForm = ({ order }) => {
     order_address,
   } = order;
 
+  // useEffect(() => {
+  //   if (order_price) {
+  //     fetch("http://localhost:5000/create-payment-intent", {
+  //       method: "POST",
+  //       headers: {
+  //         "content-type": "application/json",
+  //         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  //       },
+  //       body: JSON.stringify({ order_price }),
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         if (data?.clientSecret) {
+  //           setClientSecret(data.clientSecret);
+  //         }
+  //       });
+  //   }
+  // }, [order_price]);
+
   useEffect(() => {
     if (order_price) {
       fetch("http://localhost:5000/create-payment-intent", {

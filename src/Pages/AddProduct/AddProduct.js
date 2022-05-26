@@ -10,8 +10,8 @@ const AddProduct = () => {
     fetch(url, {
       method: "POST",
       headers: {
-        'content-type': 'application/json',
-        'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(data),
     })
@@ -43,47 +43,47 @@ const AddProduct = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <input
-          className="mb-2"
+          className="input input-bordered w-full max-w-xs"
           placeholder="Name"
           {...register("name", { required: true, maxLength: 40 })}
         />
         <input
-          className="mb-2"
+          className="input input-bordered w-full max-w-xs"
           placeholder="Photo URL"
           type="text"
           {...register("image")}
         />
         <textarea
-          className="mb-2"
+          className="input input-bordered w-full max-w-xs"
           placeholder="Description"
           {...register("about")}
         />
         <input
-          className="mb-2"
+          className="input input-bordered w-full max-w-xs"
           placeholder="Price"
           type="number"
           {...register("price")}
         />
         <input
-          className="mb-2"
+          className="input input-bordered w-full max-w-xs"
           placeholder="Minimum quantity"
           type="number"
           {...register("minimum_quantity")}
         />
         <input
-          className="mb-2"
+          className="input input-bordered w-full max-w-xs"
           placeholder="Available quantity"
           type="number"
           {...register("available_quantity")}
         />
         <input
-          className="mb-2"
+          className="input input-bordered w-full max-w-xs"
           placeholder="company Name"
           {...register("company_name", { required: true, maxLength: 40 })}
         />
         <input
           type="submit"
-          value="Add Service"
+          value="Add Product"
           className="btn btn-secondary w-full max-w-xs"
         />
       </form>

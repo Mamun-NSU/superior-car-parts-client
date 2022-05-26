@@ -1,6 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ManageOrder = ({ order, index, refetch }) => {
+  const [orders, setOrders] = useState([]);
+  const deleteItem = (id) => {
+    const proceed = window.confirm("Are you sure?");
+    if (proceed) {
+      const url = `http://localhost:5000/orders/${id}`;
+      fetch(url, {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          const remaining = orders.filter((order) => order._id !== id);
+          setOrders(remaining);
+        });
+    }
+  };
+
   return (
     <div>
       <tr>
@@ -11,7 +31,12 @@ const ManageOrder = ({ order, index, refetch }) => {
         <td>{order.order_price}</td>
         <td>{order.order_address}</td>
         <td>
-          <button class="btn btn-xs">Remove Order</button>
+          <button
+            onClick={() => deleteItem(order._id)}
+            className="btn btn-primary"
+          >
+            Delete: {order.order_name}
+          </button>
         </td>
       </tr>
     </div>
