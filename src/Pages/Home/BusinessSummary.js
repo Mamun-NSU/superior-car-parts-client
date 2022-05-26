@@ -6,7 +6,7 @@ const BusinessSummary = () => {
       <h2 className="text-2xl font-bold text-primary text-center my-5">
         This is BusinessSummary
       </h2>
-      <div className="stats shadow">
+      <div className="stats shadow flex justify-center items-center">
         <div className="stat">
           <div className="stat-figure text-secondary">
             <svg
