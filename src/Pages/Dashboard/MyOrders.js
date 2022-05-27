@@ -8,13 +8,13 @@ const MyOrders = () => {
   const [orders, setOrders] = useState([]);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
-  console.log(`http://localhost:5000/orders?user_email=${user.email}`);
+  console.log(`https://boiling-dawn-76009.herokuapp.com/orders?user_email=${user.email}`);
 
   // pw: m.P$@-Y7+K23V?h
   //  use:882
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/orders?user_email=${user.email}`, {
+      fetch(`https://boiling-dawn-76009.herokuapp.com/orders?user_email=${user.email}`, {
         method: "GET",
         headers: {
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -38,7 +38,7 @@ const MyOrders = () => {
   const deleteItem = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      const url = `http://localhost:5000/orders/${id}`;
+      const url = `https://boiling-dawn-76009.herokuapp.com/orders/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {

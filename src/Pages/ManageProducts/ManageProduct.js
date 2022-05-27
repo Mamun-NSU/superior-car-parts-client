@@ -6,7 +6,7 @@ const ManageProduct = (product, index, refetch) => {
   const deleteItem = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      const url = `http://localhost:5000/parts/${id}`;
+      const url = `https://boiling-dawn-76009.herokuapp.com/parts/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {

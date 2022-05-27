@@ -9,25 +9,22 @@ const Carousol = () => {
             </h1>
             <div class="carousel carousel-center rounded-box">
                 <div class="carousel-item">
-                    <img src="https://api.lorem.space/image/pizza?w=400&h=300&hash=8B7BCDC2" alt="Pizza" />
+                    <img className="h-96" src="https://i.ibb.co/WKtw0fT/seat.jpg" alt="Seat" />
                 </div>
                 <div class="carousel-item">
-                    <img src="https://api.lorem.space/image/pizza?w=400&h=300&hash=500B67FB" alt="Pizza" />
+                    <img className="h-96" src="https://i.ibb.co/85Q0Svc/steering.jpg" alt="Steering" />
                 </div>
                 <div class="carousel-item">
-                    <img src="https://api.lorem.space/image/pizza?w=400&h=300&hash=A89D0DE6" alt="Pizza" />
+                    <img className="h-96" src="https://i.ibb.co/yBPmJJB/engine.jpg" alt="Engine" />
                 </div>
                 <div class="carousel-item">
-                    <img src="https://api.lorem.space/image/pizza?w=400&h=300&hash=225E6693" alt="Pizza" />
+                    <img className="h-96" src="https://i.ibb.co/bL0W0xf/gear.jpg" alt="Gear" />
                 </div>
                 <div class="carousel-item">
-                    <img src="https://api.lorem.space/image/pizza?w=400&h=300&hash=9D9539E7" alt="Pizza" />
+                    <img className="h-96" src="https://i.ibb.co/4SqdfVh/battery.jpg" alt="Battery" />
                 </div>
                 <div class="carousel-item">
-                    <img src="https://api.lorem.space/image/pizza?w=400&h=300&hash=BDC01094" alt="Pizza" />
-                </div>
-                <div class="carousel-item">
-                    <img src="https://api.lorem.space/image/pizza?w=400&h=300&hash=7F5AE56A" alt="Pizza" />
+                    <img className="h-96" src="https://i.ibb.co/P6HSqfd/tire.jpg" alt="Tire" />
                 </div>
             </div>
         </div>

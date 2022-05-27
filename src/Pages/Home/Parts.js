@@ -6,7 +6,7 @@ const Parts = () => {
   const [parts, setParts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/parts", {
+    fetch("https://boiling-dawn-76009.herokuapp.com/parts", {
       method: "GET",
       headers: {
         "content-type": "application/json",

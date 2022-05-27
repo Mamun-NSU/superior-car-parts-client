@@ -13,7 +13,7 @@ const Purchase = () => {
   const [numberError, setNumberError] = useState("");
 
   const { partId } = useParams();
-  const url = `http://localhost:5000/parts/${partId}`;
+  const url = `https://boiling-dawn-76009.herokuapp.com/parts/${partId}`;
 
   const { data: part, isLoading } = useQuery(["parts", partId], () =>
     fetch(url, {
@@ -39,7 +39,7 @@ const Purchase = () => {
       order_price: totalPrice,
       order_address: event.target.order_address.value,
     };
-    const url = `http://localhost:5000/orders`;
+    const url = `https://boiling-dawn-76009.herokuapp.com/orders`;
     if (!numberError.length) {
       fetch(url, {
         method: "POST",
