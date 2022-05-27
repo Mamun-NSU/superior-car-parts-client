@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { toast } from "react-toastify";
 
 const UserRow = ({ user, index, refetch }) => {
-  const { email, role } = user;
+  const { _id, email, role } = user;
+  const [users, setUsers] = useState([]);
   const makeAdmin = () => {
     fetch(`https://boiling-dawn-76009.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
@@ -23,6 +24,26 @@ const UserRow = ({ user, index, refetch }) => {
         }
       });
   };
+
+  const deleteItem = (id) => {
+    const proceed = window.confirm(`"Are you sure DELETE ${email} form user list?"`);
+    if (proceed) {
+      const url = `https://boiling-dawn-76009.herokuapp.com/user/${id}`;
+      fetch(url, {
+        method: "DELETE",
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          const remaining = users.filter((user) => user._id !== id);
+          setUsers(remaining);
+        });
+    }
+  };
+
   return (
     <tr>
       <th>{index + 1}</th>
@@ -35,7 +56,12 @@ const UserRow = ({ user, index, refetch }) => {
         )}
       </td>
       <td>
-        <button class="btn btn-xs">Remove User</button>
+        <button
+          onClick={() => deleteItem(_id)}
+          className="btn btn-primary"
+        >
+          Delete User
+        </button>
       </td>
     </tr>
   );
