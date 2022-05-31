@@ -5,7 +5,7 @@ const ManageOrder = ({ order, index, refetch }) => {
   const deleteItem = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      const url = `https://boiling-dawn-76009.herokuapp.com/orders/${id}`;
+      const url = `http://localhost:5000/orders/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {

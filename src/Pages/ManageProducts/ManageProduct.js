@@ -6,12 +6,12 @@ const ManageProduct = (product, index, refetch) => {
   const deleteItem = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      const url = `https://boiling-dawn-76009.herokuapp.com/parts/${id}`;
+      const url = `http://localhost:5000/parts/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {
-          authorization: `Bearer ${localStorage.getItem('accessToken')}`
-        }
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
       })
         .then((res) => res.json())
         .then((data) => {

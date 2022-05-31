@@ -6,7 +6,7 @@ const AddProduct = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    const url = `https://boiling-dawn-76009.herokuapp.com/parts`;
+    const url = `http://localhost:5000/parts`;
     fetch(url, {
       method: "POST",
       headers: {

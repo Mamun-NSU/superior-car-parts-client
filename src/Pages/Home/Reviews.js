@@ -8,7 +8,7 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`https://boiling-dawn-76009.herokuapp.com/reviews`, {
+    fetch(`http://localhost:5000/reviews`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

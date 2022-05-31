@@ -16,7 +16,7 @@ const AddReview = () => {
       review: event.target.review.value,
       ratings: event.target.ratings.value,
     };
-    const url = `https://boiling-dawn-76009.herokuapp.com/reviews`;
+    const url = `http://localhost:5000/reviews`;
     fetch(url, {
       method: "POST",
       headers: {

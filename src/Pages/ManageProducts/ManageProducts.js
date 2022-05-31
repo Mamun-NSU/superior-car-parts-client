@@ -9,7 +9,7 @@ const ManageProducts = () => {
     isLoading,
     refetch,
   } = useQuery("products", () =>
-    fetch("https://boiling-dawn-76009.herokuapp.com/parts", {
+    fetch("http://localhost:5000/parts", {
       method: "GET",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -23,7 +23,7 @@ const ManageProducts = () => {
 
   // useEffect(() => {
   //   // parts.json
-  //   fetch("https://boiling-dawn-76009.herokuapp.com/parts")
+  //   fetch("http://localhost:5000/parts")
   //     .then((res) => res.json())
   //     .then((data) => setProducts(data));
   // }, []);

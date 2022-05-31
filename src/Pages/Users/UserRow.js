@@ -5,7 +5,7 @@ const UserRow = ({ user, index, refetch }) => {
   const { _id, email, role } = user;
   const [users, setUsers] = useState([]);
   const makeAdmin = () => {
-    fetch(`https://boiling-dawn-76009.herokuapp.com/user/admin/${email}`, {
+    fetch(`http://localhost:5000/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -26,9 +26,11 @@ const UserRow = ({ user, index, refetch }) => {
   };
 
   const deleteItem = (id) => {
-    const proceed = window.confirm(`"Are you sure DELETE ${email} form user list?"`);
+    const proceed = window.confirm(
+      `"Are you sure DELETE ${email} form user list?"`
+    );
     if (proceed) {
-      const url = `https://boiling-dawn-76009.herokuapp.com/user/${id}`;
+      const url = `http://localhost:5000/user/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {
@@ -56,10 +58,7 @@ const UserRow = ({ user, index, refetch }) => {
         )}
       </td>
       <td>
-        <button
-          onClick={() => deleteItem(_id)}
-          className="btn btn-primary"
-        >
+        <button onClick={() => deleteItem(_id)} className="btn btn-primary">
           Delete User
         </button>
       </td>

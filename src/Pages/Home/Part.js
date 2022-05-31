@@ -28,7 +28,7 @@ const Part = ({ part }) => {
   //   const proceed = window.confirm("Are you sure?");
   //   if (proceed) {
   //     toast.success("Part deleted successfully");
-  //     const url = `https://boiling-dawn-76009.herokuapp.com/parts/${id}`;
+  //     const url = `http://localhost:5000/parts/${id}`;
   //     fetch(url, {
   //       method: "DELETE",
   //       headers: {

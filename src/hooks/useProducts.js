@@ -4,7 +4,7 @@ const useProducts = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("https://boiling-dawn-76009.herokuapp.com/parts")
+    fetch("http://localhost:5000/parts")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);

@@ -11,9 +11,10 @@ const Purchase = () => {
   const [user, loading, error] = useAuthState(auth);
   const [totalPrice, setTotalPrice] = useState(0);
   const [numberError, setNumberError] = useState("");
+  const [totalPriceError, setTotalPriceError] = useState("");
 
   const { partId } = useParams();
-  const url = `https://boiling-dawn-76009.herokuapp.com/parts/${partId}`;
+  const url = `http://localhost:5000/parts/${partId}`;
 
   const { data: part, isLoading } = useQuery(["parts", partId], () =>
     fetch(url, {
@@ -39,7 +40,7 @@ const Purchase = () => {
       order_price: totalPrice,
       order_address: event.target.order_address.value,
     };
-    const url = `https://boiling-dawn-76009.herokuapp.com/orders`;
+    const url = `http://localhost:5000/orders`;
     if (!numberError.length) {
       fetch(url, {
         method: "POST",
@@ -60,20 +61,30 @@ const Purchase = () => {
     const inputValue = event.target.value;
 
     if (
-      inputValue < part.minimum_quantity ||
-      inputValue > part.available_quantity
+      inputValue < part.minimum_quantity
+      // inputValue > part.available_quantity
     ) {
       event.target.value = 0;
       setTotalPrice(0);
       setNumberError(
         `Error occured. Number must be between ${part.minimum_quantity} and ${part.available_quantity}`
       );
+    } else if (totalPrice > 999999) {
+      event.target.value = 0;
+      setTotalPrice(0);
+      setTotalPriceError(`Error occured. Total limit exceeded $999999 }`);
     } else {
       console.log(totalPrice);
       setTotalPrice(totalPrice);
       setNumberError("");
+      setTotalPriceError("");
     }
 
+    // return totalPrice;
+
+    // console.log(totalPrice);
+    // setTotalPrice(totalPrice);
+    // setNumberError("");
     // return totalPrice;
   };
 
@@ -130,6 +141,7 @@ const Purchase = () => {
           value={totalPrice}
           className="input input-bordered w-full max-w-xs"
         />
+        <span style={{ color: "red" }}>{totalPriceError}</span>
         <input
           type="text"
           name="order_address"
