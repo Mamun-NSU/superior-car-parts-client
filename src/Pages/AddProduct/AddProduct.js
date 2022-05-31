@@ -1,26 +1,71 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 const AddProduct = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
+  const imageStorageKey = "0a30bc76b0d95f4d6e4cf0846de21115";
 
-  const onSubmit = (data) => {
-    console.log(data);
-    const url = `http://localhost:5000/parts`;
+  // const onSubmit = (data) => {
+  //   // console.log(data);
+
+  //   const url = `https://boiling-dawn-76009.herokuapp.com/parts`;
+  //   fetch(url, {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //       authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  //     },
+  //     body: JSON.stringify(data),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((result) => {
+  //       console.log(result);
+  //     });
+  // };
+  const onSubmit = async (data) => {
+    const image = data.image[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    const url = `https://api.imgbb.com/1/upload?key=${imageStorageKey}`;
     fetch(url, {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-      },
-      body: JSON.stringify(data),
+      body: formData,
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        if (result.success) {
+          const img = result.data.url;
+          const part = {
+            name: data.name,
+            about: data.about,
+            price: data.price,
+            minimum_quantity: data.minimum_quantity,
+            available_quantity: data.available_quantity,
+            company_name: data.company_name,
+            image: img,
+          };
+          // send to your database
+          fetch(`https://boiling-dawn-76009.herokuapp.com/parts`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+            body: JSON.stringify(part),
+          })
+            .then((res) => res.json())
+            .then((inserted) => {
+              if (inserted.insertedId) {
+                toast.success("Part added successfully");
+                reset();
+              } else {
+                toast.error("Failed to add the part");
+              }
+            });
+        }
       });
   };
-
   return (
     <div className="">
       <h2 className="text-2xl font-bold text-primary text-center my-5">
@@ -37,8 +82,8 @@ const AddProduct = () => {
         />
         <input
           className="input input-bordered w-full max-w-xs"
-          placeholder="Photo URL"
-          type="text"
+          placeholder="Photo"
+          type="file"
           {...register("image")}
         />
         <textarea

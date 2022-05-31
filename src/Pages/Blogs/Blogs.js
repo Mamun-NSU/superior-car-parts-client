@@ -8,7 +8,7 @@ const Blogs = () => {
         This is Blog
       </h2>
       <div class="single-blog">
-        <h5>How will you improve the performance of a React Application?</h5>
+        <h5 className="font-bold">How will you improve the performance of a React Application?</h5>
         <p>
           <span class="answare-keyword">Answare:</span> We can improve the
           performance of a React Application by many ways. Some of them are
