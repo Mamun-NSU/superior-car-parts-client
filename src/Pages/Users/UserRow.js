@@ -5,7 +5,7 @@ const UserRow = ({ user, index, refetch }) => {
   const { _id, email, role } = user;
   const [users, setUsers] = useState([]);
   const makeAdmin = () => {
-    fetch(`http://localhost:5000/user/admin/${email}`, {
+    fetch(`https://boiling-dawn-76009.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -30,7 +30,7 @@ const UserRow = ({ user, index, refetch }) => {
       `"Are you sure DELETE ${email} form user list?"`
     );
     if (proceed) {
-      const url = `http://localhost:5000/user/${id}`;
+      const url = `https://boiling-dawn-76009.herokuapp.com/user/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {

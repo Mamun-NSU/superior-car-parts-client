@@ -3,18 +3,19 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 
 const Purchase = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const [user, loading, error] = useAuthState(auth);
   const [totalPrice, setTotalPrice] = useState(0);
   const [numberError, setNumberError] = useState("");
   const [totalPriceError, setTotalPriceError] = useState("");
 
   const { partId } = useParams();
-  const url = `http://localhost:5000/parts/${partId}`;
+  const url = `https://boiling-dawn-76009.herokuapp.com/parts/${partId}`;
 
   const { data: part, isLoading } = useQuery(["parts", partId], () =>
     fetch(url, {
@@ -32,28 +33,38 @@ const Purchase = () => {
   const onSubmit = (data, event) => {
     event.preventDefault();
 
-    const orders = {
-      user_email: user.email,
-      user_name: user.displayName,
-      order_name: part.name,
-      order_quantity: event.target.order_quantity.value,
-      order_price: totalPrice,
-      order_address: event.target.order_address.value,
-    };
-    const url = `http://localhost:5000/orders`;
-    if (!numberError.length) {
-      fetch(url, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-        body: JSON.stringify(orders),
-      })
-        .then((res) => res.json())
-        .then((result) => {
-          console.log(result);
-        });
+    const proceed = window.confirm("Your order placed?");
+    if (proceed) {
+      const orders = {
+        user_email: user.email,
+        user_name: user.displayName,
+        order_name: part.name,
+        order_quantity: event.target.order_quantity.value,
+        order_price: totalPrice,
+        order_address: event.target.order_address.value,
+      };
+      const url = `https://boiling-dawn-76009.herokuapp.com/orders`;
+      if (!numberError.length) {
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+          body: JSON.stringify(orders),
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            console.log("Result is:", result);
+            if (result.insertedId) {
+              toast.success("Part added successfully");
+              reset();
+            } else {
+              toast.error("Failed to add the part");
+            }
+          });
+        reset();
+      }
     }
   };
   const calculatePrice = (event) => {
@@ -80,14 +91,9 @@ const Purchase = () => {
       setTotalPriceError("");
     }
 
-    // return totalPrice;
-
-    // console.log(totalPrice);
-    // setTotalPrice(totalPrice);
-    // setNumberError("");
-    // return totalPrice;
   };
 
+  const notify = () => toast("Wow so easy!");
   return (
     <div>
       <h3 className="font-bold text-3xl text-secondary text-center my-5">
@@ -149,17 +155,11 @@ const Purchase = () => {
           className="input input-bordered w-full max-w-xs"
         />
 
-        {/* <h2>{part.name}</h2>
-        <p>Price: {part.price}</p>
-        <p>Available Quantity: {part.available_quantity}</p>
-        <p>Minimum Quantity: {part.minimum_quantity}</p>
-        <p>Company Name: {part.company_name}</p>
-        <p>
-          <small>{part.about}</small>
-        </p> */}
+
         <button
           type="submit"
           // onClick={() => navigateToPartOrder(part._id)}
+          onClick={notify}
           className="btn btn-secondary w-full max-w-xs"
         >
           Order: {part.name}

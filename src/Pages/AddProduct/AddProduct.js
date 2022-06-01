@@ -55,14 +55,17 @@ const AddProduct = () => {
             body: JSON.stringify(part),
           })
             .then((res) => res.json())
-            .then((inserted) => {
-              if (inserted.insertedId) {
+            .then((data) => {
+              console.log("Added data:", data.insertedId);
+              if (data.insertedId) {
                 toast.success("Part added successfully");
-                reset();
+                // reset();
               } else {
                 toast.error("Failed to add the part");
               }
             });
+
+          reset();
         }
       });
   };

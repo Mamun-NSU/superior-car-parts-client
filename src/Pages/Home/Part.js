@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./css/Part.css";
 import useParts from "../../hooks/useParts";
-import { toast } from "react-toastify";
 
 const Part = ({ part }) => {
   const {
@@ -24,28 +23,6 @@ const Part = ({ part }) => {
     navigate(`/parts/${id}`);
   };
 
-  // const deleteItem = (id) => {
-  //   const proceed = window.confirm("Are you sure?");
-  //   if (proceed) {
-  //     toast.success("Part deleted successfully");
-  //     const url = `http://localhost:5000/parts/${id}`;
-  //     fetch(url, {
-  //       method: "DELETE",
-  //       headers: {
-  //         "content-type": "application/json",
-  //         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-  //       },
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         console.log(data);
-  //         const remaining = parts.filter((part) => part._id !== id);
-  //         setParts(remaining);
-  //       });
-  //   } else {
-  //     toast.error("Failed to delete the part");
-  //   }
-  // };
 
   return (
     <div className="product">
