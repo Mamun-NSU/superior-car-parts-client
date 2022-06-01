@@ -1,9 +1,13 @@
 import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
+import auth from "../../firebase.init";
 
 const UserRow = ({ user, index, refetch }) => {
   const { _id, email, role } = user;
   const [users, setUsers] = useState([]);
+  const [current_user] = useAuthState(auth);
+  console.log("Current User ID: ", current_user);
   const makeAdmin = () => {
     fetch(`https://boiling-dawn-76009.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
@@ -39,7 +43,13 @@ const UserRow = ({ user, index, refetch }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
+          if (data.deletedCount) {
+            toast.success("User deleted successfully");
+            refetch();
+          } else {
+            toast.error("Failed to delete the user");
+          }
           const remaining = users.filter((user) => user._id !== id);
           setUsers(remaining);
         });
@@ -52,7 +62,7 @@ const UserRow = ({ user, index, refetch }) => {
       <td>{email}</td>
       <td>
         {role !== "admin" && (
-          <button onClick={makeAdmin} class="btn btn-xs">
+          <button onClick={makeAdmin} className="btn btn-xs">
             Make Admin
           </button>
         )}

@@ -13,7 +13,7 @@ const MyPortfolio = () => {
 
   return (
     <div>
-      <h3 className="font-bold text-3xl text-secondary text-center my-5">
+      <h3 className="font-bold text-3xl text-primary text-center my-5">
         My Profile
       </h3>
       <form
@@ -37,7 +37,23 @@ const MyPortfolio = () => {
         <input
           type="text"
           name="phone"
-          placeholder="Order Address"
+          placeholder="Phone Number"
+          className="input input-bordered w-full max-w-xs"
+        />
+        <select
+          name="education"
+          className="select select-bordered w-full max-w-xs"
+        >
+          <option>Phd</option>
+          <option>Master</option>
+          <option>Bachelor</option>
+          <option>HSC</option>
+          <option>SSC</option>
+        </select>
+        <input
+          type="text"
+          name="Location"
+          placeholder="Your Location"
           className="input input-bordered w-full max-w-xs"
         />
         <input
@@ -63,7 +79,7 @@ const MyPortfolio = () => {
         <button
           type="submit"
           // onClick={}
-          className="btn btn-secondary w-full max-w-xs"
+          className="btn btn-primary w-full max-w-xs"
         >
           Submit Info
         </button>

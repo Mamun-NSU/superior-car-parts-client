@@ -2,24 +2,27 @@ import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
   const [user] = useAuthState(auth);
   const navigate = useNavigate();
-  console.log(`https://boiling-dawn-76009.herokuapp.com/orders?user_email=${user.email}`);
 
   // pw: m.P$@-Y7+K23V?h
   //  use:882
   useEffect(() => {
     if (user) {
-      fetch(`https://boiling-dawn-76009.herokuapp.com/orders?user_email=${user.email}`, {
-        method: "GET",
-        headers: {
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      })
+      fetch(
+        `https://boiling-dawn-76009.herokuapp.com/orders?user_email=${user.email}`,
+        {
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        }
+      )
         .then((res) => {
           console.log("res", res);
           if (res.status === 401 || res.status === 403) {
@@ -47,7 +50,12 @@ const MyOrders = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
+          if (data.deletedCount) {
+            toast.success("Order deleted successfully");
+          } else {
+            toast.error("Failed to delete the order");
+          }
           const remaining = orders.filter((order) => order._id !== id);
           setOrders(remaining);
         });

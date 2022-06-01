@@ -1,11 +1,12 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 
 const AddReview = () => {
-  const { register, handleSubmit } = useForm();
-  const [user, loading, error] = useAuthState(auth);
+  const { handleSubmit, reset } = useForm();
+  const [user] = useAuthState(auth);
 
   const onSubmit = (data, event) => {
     event.preventDefault();
@@ -27,12 +28,17 @@ const AddReview = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        if (result.insertedId) {
+          toast.success("Review added successfully");
+          reset();
+        } else {
+          toast.error("Failed to add the review");
+        }
       });
   };
   return (
     <div className="">
-      <h2 className="font-bold text-lg text-secondary text-center my-5">
+      <h2 className="font-bold text-lg text-primary text-center my-5">
         Please add a Review
       </h2>
       <form
@@ -80,7 +86,7 @@ const AddReview = () => {
         <input
           type="submit"
           value="Add Review"
-          className="btn btn-secondary w-full max-w-xs"
+          className="btn btn-primary w-full max-w-xs"
         />
       </form>
     </div>

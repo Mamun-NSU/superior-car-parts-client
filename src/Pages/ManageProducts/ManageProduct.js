@@ -1,4 +1,5 @@
 import React from "react";
+import { toast } from "react-toastify";
 import useProducts from "../../hooks/useProducts";
 
 const ManageProduct = (product, index, refetch) => {
@@ -15,7 +16,12 @@ const ManageProduct = (product, index, refetch) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
+          if (data.deletedCount) {
+            toast.success("Part deleted successfully");
+            refetch();
+          } else {
+            toast.error("Failed to delete the part");
+          }
           const remaining = products.filter(
             (product) => product.product._id !== id
           );
@@ -25,7 +31,6 @@ const ManageProduct = (product, index, refetch) => {
   };
 
   return (
-
     <tr>
       <th>{product.index + 1}</th>
       <td>{product.product.name}</td>
@@ -42,7 +47,6 @@ const ManageProduct = (product, index, refetch) => {
         </button>
       </td>
     </tr>
-
   );
 };
 

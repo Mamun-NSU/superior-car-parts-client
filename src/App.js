@@ -19,6 +19,8 @@ import RequireAdmin from "./Pages/Login/RequireAdmin";
 import ManageOrders from "./Pages/ManageOrders/ManageOrders";
 import ManageProducts from "./Pages/ManageProducts/ManageProducts";
 import Payment from "./Pages/Dashboard/Payment";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -65,6 +67,7 @@ function App() {
             </RequireAdmin>
           }
         />
+        <Route path="portfolio" element={<MyPortfolio></MyPortfolio>} />
         <Route path="blogs" element={<Blogs></Blogs>} />
         <Route path="about" element={<About></About>} />
         <Route
@@ -80,6 +83,7 @@ function App() {
         <Route path="signup" element={<SignUp></SignUp>} />
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

@@ -97,7 +97,7 @@ const CheckoutForm = ({ order }) => {
     } else {
       setCardError("");
       setTransactionId(paymentIntent.id);
-      console.log(paymentIntent);
+      // console.log(paymentIntent);
       setSuccess("Congrats! Your payment is completed.");
 
       //store payment on database
@@ -116,7 +116,7 @@ const CheckoutForm = ({ order }) => {
         .then((res) => res.json())
         .then((data) => {
           setProcessing(false);
-          console.log(data);
+          // console.log(data);
         });
     }
   };

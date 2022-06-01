@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-//import useReviews from "../../hooks/useReviews";
 import "./css/Reviews.css";
 import Review from "./Review";
 
@@ -16,7 +15,9 @@ const Reviews = () => {
       },
     })
       .then((res) => res.json())
-      .then((data) => setReviews(data));
+      .then((data) => {
+        setReviews(data);
+      });
   }, []);
 
   return (

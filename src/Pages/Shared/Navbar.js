@@ -9,8 +9,6 @@ const Navbar = () => {
   const [user] = useAuthState(auth);
   const [admin] = useAdmin(user);
 
-  //console.log(user);
-
   const logout = () => {
     signOut(auth);
     localStorage.removeItem("accessToken");
@@ -21,7 +19,8 @@ const Navbar = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/dashboard">Dashboard</Link>
+        {!admin && <Link to="/dashboard">Dashboard</Link>}
+        {admin && <Link to="/portfolio">MyPortfolio</Link>}
       </li>
       <li>
         <Link to="/about">About</Link>
@@ -30,20 +29,22 @@ const Navbar = () => {
         <Link to="/blogs">Blogs</Link>
       </li>
 
-      {admin && <>
-        <li>
-          <Link to="/add">Add Products</Link>
-        </li>
-        <li>
-          <Link to="/manageProducts">Manage Products</Link>
-        </li>
-        <li>
-          <Link to="/manageOrders">Manage Orders</Link>
-        </li>
-        <li>
-          <Link to="/users">All Users</Link>
-        </li>
-      </>}
+      {admin && (
+        <>
+          <li>
+            <Link to="/add">Add Products</Link>
+          </li>
+          <li>
+            <Link to="/manageProducts">Manage Products</Link>
+          </li>
+          <li>
+            <Link to="/manageOrders">Manage Orders</Link>
+          </li>
+          <li>
+            <Link to="/users">All Users</Link>
+          </li>
+        </>
+      )}
 
       <li>{user ? user?.displayName : ""}</li>
       <li>
@@ -84,7 +85,9 @@ const Navbar = () => {
             {menuItems}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">Superior Car Parts</a>
+        <a className="btn btn-ghost normal-case text-xl">
+          <Link to="/">Superior Car Parts</Link>
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">{menuItems}</ul>

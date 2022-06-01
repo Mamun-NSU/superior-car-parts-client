@@ -59,13 +59,11 @@ const AddProduct = () => {
               console.log("Added data:", data.insertedId);
               if (data.insertedId) {
                 toast.success("Part added successfully");
-                // reset();
+                reset();
               } else {
                 toast.error("Failed to add the part");
               }
             });
-
-          reset();
         }
       });
   };
@@ -120,7 +118,7 @@ const AddProduct = () => {
         <input
           type="submit"
           value="Add Product"
-          className="btn btn-secondary w-full max-w-xs"
+          className="btn btn-primary w-full max-w-xs"
         />
       </form>
     </div>

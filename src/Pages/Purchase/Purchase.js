@@ -55,15 +55,13 @@ const Purchase = () => {
         })
           .then((res) => res.json())
           .then((result) => {
-            console.log("Result is:", result);
             if (result.insertedId) {
-              toast.success("Part added successfully");
+              toast.success("Order added successfully");
               reset();
             } else {
-              toast.error("Failed to add the part");
+              toast.error("Failed to add the Order");
             }
           });
-        reset();
       }
     }
   };
@@ -85,15 +83,13 @@ const Purchase = () => {
       setTotalPrice(0);
       setTotalPriceError(`Error occured. Total limit exceeded $999999 }`);
     } else {
-      console.log(totalPrice);
+      // console.log(totalPrice);
       setTotalPrice(totalPrice);
       setNumberError("");
       setTotalPriceError("");
     }
-
   };
 
-  const notify = () => toast("Wow so easy!");
   return (
     <div>
       <h3 className="font-bold text-3xl text-secondary text-center my-5">
@@ -155,13 +151,7 @@ const Purchase = () => {
           className="input input-bordered w-full max-w-xs"
         />
 
-
-        <button
-          type="submit"
-          // onClick={() => navigateToPartOrder(part._id)}
-          onClick={notify}
-          className="btn btn-secondary w-full max-w-xs"
-        >
+        <button type="submit" className="btn btn-primary w-full max-w-xs">
           Order: {part.name}
         </button>
       </form>
