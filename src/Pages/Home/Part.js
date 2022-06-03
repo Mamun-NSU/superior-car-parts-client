@@ -1,9 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./css/Part.css";
-import useParts from "../../hooks/useParts";
+import useAdmin from "../../hooks/useAdmin";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
 
 const Part = ({ part }) => {
+
   const {
     _id,
     name,
@@ -18,6 +21,8 @@ const Part = ({ part }) => {
   // const [parts, setParts] = useParts();
 
   const navigate = useNavigate();
+  const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
 
   const navigateToPartDetail = (id) => {
     navigate(`/parts/${id}`);
@@ -37,7 +42,7 @@ const Part = ({ part }) => {
       </p>
       <button
         onClick={() => navigateToPartDetail(_id)}
-        className="btn btn-primary"
+        className="btn btn-primary" disabled={admin}
       >
         Book: {name}
       </button>

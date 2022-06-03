@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
+import useAdmin from "../../hooks/useAdmin";
+
 
 const Purchase = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -13,6 +15,7 @@ const Purchase = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [numberError, setNumberError] = useState("");
   const [totalPriceError, setTotalPriceError] = useState("");
+  const [admin] = useAdmin(user);
 
   const { partId } = useParams();
   const url = `https://arcane-caverns-72469.herokuapp.com/parts/${partId}`;
@@ -151,7 +154,7 @@ const Purchase = () => {
           className="input input-bordered w-full max-w-xs"
         />
 
-        <button type="submit" className="btn btn-primary w-full max-w-xs">
+        <button type="submit" className="btn btn-primary w-full max-w-xs" disabled={admin}>
           Order: {part.name}
         </button>
       </form>
