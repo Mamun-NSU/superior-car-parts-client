@@ -7,7 +7,7 @@ const Reviews = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch(`https://boiling-dawn-76009.herokuapp.com/reviews`, {
+    fetch(`https://arcane-caverns-72469.herokuapp.com/reviews`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

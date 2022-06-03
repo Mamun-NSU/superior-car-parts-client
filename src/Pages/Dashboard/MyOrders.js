@@ -15,7 +15,7 @@ const MyOrders = () => {
   useEffect(() => {
     if (user) {
       fetch(
-        `https://boiling-dawn-76009.herokuapp.com/orders?user_email=${user.email}`,
+        `https://arcane-caverns-72469.herokuapp.com/orders?user_email=${user.email}`,
         {
           method: "GET",
           headers: {
@@ -41,7 +41,7 @@ const MyOrders = () => {
   const deleteItem = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      const url = `https://boiling-dawn-76009.herokuapp.com/orders/${id}`;
+      const url = `https://arcane-caverns-72469.herokuapp.com/orders/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {

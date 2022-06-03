@@ -7,7 +7,7 @@ const ManageProduct = (product, index, refetch) => {
   const deleteItem = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      const url = `https://boiling-dawn-76009.herokuapp.com/parts/${id}`;
+      const url = `https://arcane-caverns-72469.herokuapp.com/parts/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {

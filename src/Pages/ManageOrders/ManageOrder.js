@@ -7,7 +7,7 @@ const ManageOrder = ({ order, index, refetch }) => {
   const deleteItem = (id) => {
     const proceed = window.confirm("Are you sure?");
     if (proceed) {
-      const url = `https://boiling-dawn-76009.herokuapp.com/orders/${id}`;
+      const url = `https://arcane-caverns-72469.herokuapp.com/orders/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {
@@ -55,7 +55,7 @@ const ManageOrder = ({ order, index, refetch }) => {
           <button
             onClick={() => confirmItem(order._id)}
             className="btn btn-sceondary"
-            // disabled={order.paid}
+          // disabled={order.paid}
           >
             Confirm: {order.order_name}
           </button>

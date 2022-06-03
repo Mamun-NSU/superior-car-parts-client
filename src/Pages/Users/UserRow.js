@@ -9,7 +9,7 @@ const UserRow = ({ user, index, refetch }) => {
   const [current_user] = useAuthState(auth);
   console.log("Current User ID: ", current_user);
   const makeAdmin = () => {
-    fetch(`https://boiling-dawn-76009.herokuapp.com/user/admin/${email}`, {
+    fetch(`https://arcane-caverns-72469.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -34,7 +34,7 @@ const UserRow = ({ user, index, refetch }) => {
       `"Are you sure DELETE ${email} form user list?"`
     );
     if (proceed) {
-      const url = `https://boiling-dawn-76009.herokuapp.com/user/${id}`;
+      const url = `https://arcane-caverns-72469.herokuapp.com/user/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {
@@ -68,7 +68,8 @@ const UserRow = ({ user, index, refetch }) => {
         )}
       </td>
       <td>
-        <button onClick={() => deleteItem(_id)} className="btn btn-primary">
+        <button onClick={() => deleteItem(_id)} className="btn btn-primary" disabled={current_user.email == email}>
+
           Delete User
         </button>
       </td>

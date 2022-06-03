@@ -17,7 +17,7 @@ const AddReview = () => {
       review: event.target.review.value,
       ratings: event.target.ratings.value,
     };
-    const url = `https://boiling-dawn-76009.herokuapp.com/reviews`;
+    const url = `https://arcane-caverns-72469.herokuapp.com/reviews`;
     fetch(url, {
       method: "POST",
       headers: {

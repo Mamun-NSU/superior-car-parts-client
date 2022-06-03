@@ -15,7 +15,7 @@ const Purchase = () => {
   const [totalPriceError, setTotalPriceError] = useState("");
 
   const { partId } = useParams();
-  const url = `https://boiling-dawn-76009.herokuapp.com/parts/${partId}`;
+  const url = `https://arcane-caverns-72469.herokuapp.com/parts/${partId}`;
 
   const { data: part, isLoading } = useQuery(["parts", partId], () =>
     fetch(url, {
@@ -43,7 +43,7 @@ const Purchase = () => {
         order_price: totalPrice,
         order_address: event.target.order_address.value,
       };
-      const url = `https://boiling-dawn-76009.herokuapp.com/orders`;
+      const url = `https://arcane-caverns-72469.herokuapp.com/orders`;
       if (!numberError.length) {
         fetch(url, {
           method: "POST",

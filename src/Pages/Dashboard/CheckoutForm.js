@@ -22,7 +22,7 @@ const CheckoutForm = ({ order }) => {
 
   // useEffect(() => {
   //   if (order_price) {
-  //     fetch("https://boiling-dawn-76009.herokuapp.com/create-payment-intent", {
+  //     fetch("https://arcane-caverns-72469.herokuapp.com/create-payment-intent", {
   //       method: "POST",
   //       headers: {
   //         "content-type": "application/json",
@@ -41,7 +41,7 @@ const CheckoutForm = ({ order }) => {
 
   useEffect(() => {
     if (order_price) {
-      fetch("https://boiling-dawn-76009.herokuapp.com/create-payment-intent", {
+      fetch("https://arcane-caverns-72469.herokuapp.com/create-payment-intent", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -105,7 +105,7 @@ const CheckoutForm = ({ order }) => {
         appointment: _id,
         transactionId: paymentIntent.id,
       };
-      fetch(`https://boiling-dawn-76009.herokuapp.com/orders/${_id}`, {
+      fetch(`https://arcane-caverns-72469.herokuapp.com/orders/${_id}`, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",

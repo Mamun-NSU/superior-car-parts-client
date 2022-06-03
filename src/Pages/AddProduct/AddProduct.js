@@ -9,7 +9,7 @@ const AddProduct = () => {
   // const onSubmit = (data) => {
   //   // console.log(data);
 
-  //   const url = `https://boiling-dawn-76009.herokuapp.com/parts`;
+  //   const url = `https://arcane-caverns-72469.herokuapp.com/parts`;
   //   fetch(url, {
   //     method: "POST",
   //     headers: {
@@ -46,7 +46,7 @@ const AddProduct = () => {
             image: img,
           };
           // send to your database
-          fetch(`https://boiling-dawn-76009.herokuapp.com/parts`, {
+          fetch(`https://arcane-caverns-72469.herokuapp.com/parts`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
