@@ -23,7 +23,6 @@ const Parts = () => {
         This is Parts Section
       </h1>
       <div className="row">
-        {/* <h1 className="text-primary text-center mt-5"> Our Products</h1> */}
         <div className="products-container">
           {parts.map((part) => (
             <Part key={part._id} part={part}></Part>

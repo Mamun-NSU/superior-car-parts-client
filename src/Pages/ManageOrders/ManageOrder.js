@@ -16,7 +16,6 @@ const ManageOrder = ({ order, index, refetch }) => {
       })
         .then((res) => res.json())
         .then((data) => {
-          // console.log("Manage data", data);
           if (data.deletedCount) {
             toast.success("Order deleted successfully");
             refetch();
